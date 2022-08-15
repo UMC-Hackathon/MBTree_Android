@@ -34,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="12dp"
+        android:layout_marginBottom="3dp"
         android:text="B. 답변 예시 두번째"
         android:textColor="@color/main_color"
         android:background="@drawable/tv_chat_question"
