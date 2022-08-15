@@ -1,4 +1,7 @@
 package com.umc.project.mbtree.view.chat
 
-class ChattingActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class ChattingActivity: AppCompatActivity() {
+
 }

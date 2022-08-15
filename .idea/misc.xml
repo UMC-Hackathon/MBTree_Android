@@ -6,12 +6,17 @@
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/drawable/bg_tab_layout.xml" value="0.1015" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/drawable/bg_textview.xml" value="0.1" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/drawable/tv_chat_me.xml" value="0.128" />
+        <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/drawable/tv_chat_question.xml" value="0.1795" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/drawable/tv_chat_you.xml" value="0.1" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/layout/activity_chatting.xml" value="0.264" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/layout/fragment_chatting.xml" value="0.21333333333333335" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/layout/fragment_friend.xml" value="0.21333333333333335" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/layout/fragment_tree.xml" value="0.21333333333333335" />
+        <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/layout/item_chat_end.xml" value="0.24427083333333333" />
+        <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/layout/item_chat_me.xml" value="0.24947916666666667" />
+        <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/layout/item_chat_question.xml" value="0.6" />
+        <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/layout/item_chat_you.xml" value="0.4" />
       </map>
     </option>
   </component>
