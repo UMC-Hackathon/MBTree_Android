@@ -2,35 +2,38 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_F8"
-    android:padding="13dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/grey_F5"
+    android:paddingHorizontal="13dp">
 
     <EditText
-        android:id="@+id/et_nickname"
+        android:id="@+id/et_friend_search"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:paddingStart="12dp"
-        android:layout_marginTop="120dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:gravity="left"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:hint=" 카카오톡 친구를 검색해보세요."
+        android:background="@drawable/bg_chat_list"
+        android:drawableLeft="@drawable/ic_search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:inputType="textPersonName"
-        android:drawableStart="@drawable/ic_search"
-        android:drawablePadding="10dp"
-        android:text="카카오톡 친구를 검색해보세요."
-        android:textSize="12dp"
-        android:textColor="#767676"
-        android:textFontWeight="300"
-        android:fontFamily="@font/noto_regular"
-        android:background="@drawable/et_rounded_rectangle" />
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp_friend"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="60dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_friend_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginVertical="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_friend_search"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/item_list"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
