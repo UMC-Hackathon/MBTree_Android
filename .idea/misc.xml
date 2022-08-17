@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/drawable/bg_chat_list.xml" value="0.182" />
+        <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/drawable/bg_gradient.xml" value="0.16" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/drawable/bg_tab_layout.xml" value="0.1015" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/drawable/bg_textview.xml" value="0.1" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/drawable/tv_chat_me.xml" value="0.128" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/drawable/tv_chat_question.xml" value="0.1795" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/drawable/tv_chat_you.xml" value="0.1" />
+        <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/layout/activity_answer.xml" value="0.16" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/layout/activity_chatting.xml" value="0.264" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/work/mobileApp/mbtree/app/src/main/res/layout/fragment_chatting.xml" value="0.21333333333333335" />
