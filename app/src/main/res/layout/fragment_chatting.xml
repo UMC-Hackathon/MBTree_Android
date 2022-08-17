@@ -2,17 +2,47 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_F8"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingHorizontal="13dp"
+    android:background="@color/grey_F5"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
+        android:id="@+id/tv_chat_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="130dp"
         android:textColor="@color/black"
-        android:text="채팅 화면"/>
+        android:textSize="15sp"
+        android:text="채팅 리스트"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_chat_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginVertical="20dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_chat_list_start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_chat_list"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/item_list" />
+
+    <Button
+        android:id="@+id/btn_chat_list_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="매칭 시작"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_textview"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
