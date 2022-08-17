@@ -3,16 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_F8"
+    android:padding="13dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+    <EditText
+        android:id="@+id/et_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingStart="12dp"
+        android:layout_marginTop="120dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:textColor="@color/black"
-        android:text="친구 화면"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="textPersonName"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="10dp"
+        android:text="카카오톡 친구를 검색해보세요."
+        android:textSize="12dp"
+        android:textColor="#767676"
+        android:textFontWeight="300"
+        android:fontFamily="@font/noto_regular"
+        android:background="@drawable/et_rounded_rectangle" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_friend"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
