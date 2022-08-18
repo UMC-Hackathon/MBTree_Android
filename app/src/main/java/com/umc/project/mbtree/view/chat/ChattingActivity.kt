@@ -1,7 +1,6 @@
 package com.umc.project.mbtree.view.chat
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import com.umc.project.mbtree.data.Chat
 import com.umc.project.mbtree.databinding.ActivityChattingBinding
@@ -31,4 +30,5 @@ class ChattingActivity: AppCompatActivity() {
         multiAdapter.chatList2 = chatDatas
         multiAdapter.notifyDataSetChanged()
     }
+
 }
