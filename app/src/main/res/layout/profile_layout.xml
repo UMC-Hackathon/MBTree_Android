@@ -38,12 +38,11 @@
         android:layout_width="316dp"
         android:layout_height="351dp"
         android:layout_gravity="center"
-        android:layout_marginEnd="48dp"
-        android:background="@drawable/button_round_mypage"
+        android:background="@drawable/tv_chat_question"
         android:elevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_page"
-        tools:layout_editor_absoluteY="73dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_page">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_imageview"
@@ -54,7 +53,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/profile_name"
@@ -69,7 +68,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_imageview"/>
+            app:layout_constraintTop_toBottomOf="@+id/profile_imageview" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/my_mbti"
@@ -78,39 +77,41 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="108dp"
             android:layout_marginBottom="64dp"
-            android:background="@drawable/button_round_mbti"
+            android:background="@drawable/tv_chat_question"
             android:text="ESTP"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_name"
-            app:layout_constraintVertical_bias="0.055"/>
+            app:layout_constraintVertical_bias="0.055" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/point"
             android:layout_width="220dp"
             android:layout_height="35dp"
             android:layout_marginTop="12dp"
-            android:background="@drawable/button_round_mypage"
-            android:elevation="30dp" android:text="포인트"
+            android:background="@drawable/tv_chat_question"
+            android:elevation="30dp"
+            android:text="포인트"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/my_mbti"/>
+            app:layout_constraintTop_toBottomOf="@+id/my_mbti" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/mbtree_fruit"
             android:layout_width="220dp"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/button_round_mypage"
+            android:background="@drawable/tv_chat_question"
             android:elevation="30dp"
             android:text="받은 열매"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/point"/>
+            app:layout_constraintTop_toBottomOf="@+id/point" />
 
-        <Button android:id="@+id/gallery"
+        <Button
+            android:id="@+id/gallery"
             android:layout_width="114dp"
             android:layout_height="114dp"
             android:layout_marginTop="4dp"
@@ -118,7 +119,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/profile_imageview"
-            app:layout_constraintTop_toTopOf="@+id/profile_imageview"/>
+            app:layout_constraintTop_toTopOf="@+id/profile_imageview" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -137,7 +138,7 @@
             android:id="@+id/account"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:background="@drawable/button_round_mypage"
+            android:background="@drawable/tv_chat_question"
             android:elevation="20dp"
             android:text="계정"
             android:textColor="@color/black"
@@ -152,7 +153,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/button_round_mypage"
+            android:background="@drawable/tv_chat_question"
             android:elevation="20dp"
             android:text="이용약관"
             app:layout_constraintEnd_toEndOf="parent"
@@ -163,7 +164,7 @@
             android:id="@+id/version"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:background="@drawable/button_round_mypage"
+            android:background="@drawable/tv_chat_question"
             android:elevation="20dp"
             android:text="버전 정보"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -177,7 +178,7 @@
             android:id="@+id/logout"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:background="@drawable/button_round_mypage"
+            android:background="@drawable/tv_chat_question"
             android:elevation="20dp"
             android:text="로그아웃"
             app:layout_constraintBottom_toBottomOf="parent"
