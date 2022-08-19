@@ -27,7 +27,7 @@
 <!--        </activity>-->
 <!--    </application>-->
 
-    // 순서
+    <!-- 순서 -->
     <application
         android:name=".view.GlobalApplication"
         android:allowBackup="true"
@@ -60,6 +60,9 @@
             android:name=".view.MainActivity"
             android:exported="true">
         </activity>
+
+        <activity android:name=".view.ProfileActivity"
+            android:exported="true"/>
 
 
         <activity

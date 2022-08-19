@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.umc.project.mbtree.databinding.FragmentTreeBinding
+import com.umc.project.mbtree.view.tree.LockerBottomSheet
 
 class TreeFragment: Fragment() {
 
@@ -21,5 +22,14 @@ class TreeFragment: Fragment() {
         //로직 작성
 
         return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        binding.btnlocker.setOnClickListener{
+            val bottomSheet = LockerBottomSheet()
+            bottomSheet.show(parentFragmentManager, bottomSheet.tag)
+        }
     }
 }
