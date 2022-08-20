@@ -36,6 +36,7 @@
         android:id="@+id/btn_chat_list_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:text="매칭 시작"
         android:textSize="15sp"
         android:textColor="@color/white"

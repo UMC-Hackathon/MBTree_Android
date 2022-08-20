@@ -34,7 +34,6 @@
                 android:id="@+id/iv_chat_profile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitCenter"
                 android:background="@color/grey_76"
                 android:src="@drawable/ic_my"/>
         </androidx.cardview.widget.CardView>
@@ -99,7 +98,7 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <EditText
-        android:id="@+id/et_chat_sent"
+        android:id="@+id/et_chat_send"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:paddingVertical="5dp"

@@ -30,11 +30,14 @@ class ChatRVAdapter(private val context: Context,
                 )
                 RightViewHolder(view)
             }
-            else -> {
+            3 -> {
                 view = LayoutInflater.from(parent.context).inflate(
                     R.layout.item_chat_you, parent, false
                 )
                 CenterViewHolder(view)
+            }
+            else -> {
+                throw RuntimeException("Error")
             }
         }
     }
