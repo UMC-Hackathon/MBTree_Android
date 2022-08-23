@@ -1,4 +1,4 @@
-package com.umc.project.mbtree.view
+package com.umc.project.mbtree.view.tree
 
 
 import com.google.gson.annotations.SerializedName
