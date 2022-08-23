@@ -31,6 +31,7 @@ object RetrofitObject{
             //.client(okHttpClient)
             .build()}
         Log.v("eun test", "retrofit오브젝트 들어옴" )
+        Log.v("eun test", "retrofit " +  retrofit )
         return retrofit!!
     }
 

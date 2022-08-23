@@ -20,7 +20,7 @@ data class Message
     @SerializedName("isRead")val isRead: Int,
     @SerializedName("paperStyle") val paperStyle: Int,
     @SerializedName("writerId")val writerId: WriterId,
-    @SerializedName("treeId")val treeId: treeId,
+    @SerializedName("treeId")val treeId: TreeId,
 )
 
 
