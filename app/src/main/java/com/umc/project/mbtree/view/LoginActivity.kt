@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
             else if (tokenInfo != null) {
               //  Toast.makeText(this, "토큰 정보 보기 성공", Toast.LENGTH_SHORT).show()
                 Log.d("Token", "토큰 정보 보기 성공")
-                val intent = Intent(this, AfterLoginActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 finish()
             }
