@@ -1,4 +1,4 @@
-package com.umc.project.mbtree.view
+package com.umc.project.mbtree.view.tree
 
 import retrofit2.Call
 import retrofit2.http.GET

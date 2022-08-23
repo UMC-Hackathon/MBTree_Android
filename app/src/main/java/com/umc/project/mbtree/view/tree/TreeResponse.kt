@@ -1,4 +1,4 @@
-package com.umc.project.mbtree.view
+package com.umc.project.mbtree.view.tree
 
 
 import com.google.gson.annotations.SerializedName
@@ -9,26 +9,26 @@ data class TreeResponse (
     @SerializedName("isSuccess") val isSuccess: Boolean,
     @SerializedName("code") val code: Int,
     @SerializedName("message") val message: String,
-    @SerializedName("result") val result: TreeResult
-)
+    @SerializedName("result") val result: List<Result>
+)/*
 data class TreeResult(
     @SerializedName("tree") val tree: List<Result>
-    )
+    )*/
 data class Result
     (
     @SerializedName("id") val id:Int,
     @SerializedName("content") val content: String,
-    @SerializedName("createDate")val createDate: LocalDateTime,
+    @SerializedName("createDate")val createDate: String,
     @SerializedName("isRead")val isRead: Int,
     @SerializedName("paperStyle") val paperStyle: Int,
-    @SerializedName("writerId")val writerId: WriterIdResult,
-    @SerializedName("treeId")val treeId: TreeIdResult,
+    @SerializedName("writerId")val writerId: WriterId,
+    @SerializedName("treeId")val treeId: TreeId,
 )
-
+/*
 data class TreeIdResult(
     @SerializedName("treeIdResult") val treeIdresult: List<treeId>
-)
-data class treeId(
+)*/
+data class TreeId(
     @SerializedName("id") val id:Int,
     @SerializedName("uuid") val uuid: String,
     @SerializedName("name")val name: String,
@@ -37,12 +37,13 @@ data class treeId(
     @SerializedName("location")val location: String,
     @SerializedName("token")val token: String,
     @SerializedName("point")val point: Int,
-    @SerializedName("createDate")val createDate: LocalDateTime,
+   // @SerializedName("createDate")val createDate: String,
 
     )
+/*
 data class WriterIdResult(
     @SerializedName("writerIdResult") val writerIdresult: List<WriterId>
-)
+)*/
 data class WriterId (
     @SerializedName("id") val id:Int,
     @SerializedName("uuid") val uuid: String,
@@ -52,7 +53,7 @@ data class WriterId (
     @SerializedName("location")val location: String,
     @SerializedName("token")val token: String,
     @SerializedName("point")val point: Int,
-    @SerializedName("createDate")val createDate: LocalDateTime,
+    //@SerializedName("createDate")val createDate: String,
 )
 
 
