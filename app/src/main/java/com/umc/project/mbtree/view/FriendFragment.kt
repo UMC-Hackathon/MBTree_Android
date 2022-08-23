@@ -24,9 +24,9 @@ class FriendFragment: Fragment() {
         //dummy data
         var datas = ArrayList<User>()
         datas.apply {
-            add(User(1, "user1", "123", "ISFP"))
-            add(User(2, "user2", "234", "ISFJ"))
-            add(User(3, "user3", "345", "ESFP"))
+            add(User(1, "22d31", "user1", "test@naver.com", "isfp", "temp", "ase2", 0, null))
+            add(User(2, "22d31", "user2", "test@naver.com", "isfp", "temp", "ase2", 0, null))
+            add(User(3, "22d31", "user3", "test@naver.com", "isfp", "temp", "ase2", 0, null))
         }
 
         //채팅리스트 어댑터 붙이기

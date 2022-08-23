@@ -10,7 +10,14 @@ data class ChatList(
     val isSuccess: Boolean,
     val code: Int,
     val message: String,
-    val result: ArrayList<User>
+    val result: ArrayList<ChatListResult>
+)
+
+data class ChatListResult(
+    val id: Int,
+    val user1: User?,
+    val user2: User?,
+    val quit: Int
 )
 
 data class ChatContent(

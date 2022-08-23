@@ -29,9 +29,9 @@ class LockerBottomSheet: BottomSheetDialogFragment() {
         binding = LockerLayoutBinding.inflate(inflater, container, false)
         var datas = ArrayList<User>()
         datas.apply {
-            add(User(1, "user1", "123", "ISFP"))
-            add(User(2, "user2", "234", "ISFP"))
-            add(User(3, "user3", "345", "ISFP"))
+            add(User(1, "22d31", "user1", "test@naver.com", "isfp", "temp", "ase2", 0, null))
+            add(User(2, "22d31", "user2", "test@naver.com", "isfp", "temp", "ase2", 0, null))
+            add(User(3, "22d31", "user3", "test@naver.com", "isfp", "temp", "ase2", 0, null))
         }
 
         val adaper = LockerRVAdapter(datas)
