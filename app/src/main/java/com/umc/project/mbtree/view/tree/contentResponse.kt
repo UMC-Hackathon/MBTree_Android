@@ -16,7 +16,7 @@ data class Message
     (
     @SerializedName("id") val id:Int,
     @SerializedName("content") val content: String,
-    @SerializedName("createDate")val createDate: LocalDateTime,
+    @SerializedName("createDate")val createDate: String,
     @SerializedName("isRead")val isRead: Int,
     @SerializedName("paperStyle") val paperStyle: Int,
     @SerializedName("writerId")val writerId: WriterId,

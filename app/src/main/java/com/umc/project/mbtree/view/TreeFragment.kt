@@ -83,7 +83,7 @@ class TreeFragment: Fragment() {
                 Log.v("mbtree test", "message: " + rLists.message)
                 Log.v( "eun test", "은영"+ rLists.result)
 
-                /* for(r in rLists.result){
+                 for(r in rLists.result){
                        Log.d("mbtree test", "id: " + r.id)
                        Log.d("mbtree test", "content: " + r.content)
 
@@ -92,12 +92,12 @@ class TreeFragment: Fragment() {
                        Log.d("mbtree test", "name: " + writer.name)
                        Log.d("mbtree test", "email: " + writer.email)
 
-                       var user = r.userId
+                       var user = r.treeId
                        Log.d("mbtree test", "id: " + user.id)
                        Log.d("mbtree test", "name: " + user.name)
                        Log.d("mbtree test", "email: " + user.email)
 
-                   }*/
+                   }
             }
             override fun onFailure(call: Call<TreeResponse>, t: Throwable) {
 
