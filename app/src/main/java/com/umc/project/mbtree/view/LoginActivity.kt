@@ -1,5 +1,6 @@
 package com.umc.project.mbtree.view
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
@@ -10,6 +11,7 @@ import android.util.Log
 import android.widget.ImageButton
 import android.widget.Toast
 import com.kakao.sdk.auth.model.OAuthToken
+import com.kakao.sdk.common.KakaoSdk
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.user.UserApiClient
 import com.umc.project.mbtree.R
@@ -18,10 +20,11 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+       // KakaoSdk.init(this, "{NATIVE_APP_KEY}")
 
         val keyHash = Utility.getKeyHash(this)//onCreate 안에 입력해주자
-        Log.d("Hash", keyHash)
+       // Log.d("Hash", keyHash)
+        Log.e(TAG, "해시 키 값 : ${keyHash}")
 
 
 
@@ -66,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                     else -> { // Unknown
                         Toast.makeText(this, "기타 에러", Toast.LENGTH_SHORT).show()
+                        Log.d("kakao Login","로그인 오류 " + error.toString())
                     }
                 }
             }
