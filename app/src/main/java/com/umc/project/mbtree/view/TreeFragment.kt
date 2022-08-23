@@ -84,16 +84,16 @@ class TreeFragment: Fragment() {
                 Log.v( "eun test", "은영"+ rLists.result)
 
                  for(r in rLists.result){
-                       Log.d("mbtree test", "id: " + r.id)
+                       Log.d("mbtree test", "message id: " + r.id)
                        Log.d("mbtree test", "content: " + r.content)
 
                        var writer = r.writerId
-                       Log.d("mbtree test", "id: " + writer.id)
+                       Log.d("mbtree test", "writerid: " + writer.id)
                        Log.d("mbtree test", "name: " + writer.name)
                        Log.d("mbtree test", "email: " + writer.email)
 
                        var user = r.treeId
-                       Log.d("mbtree test", "id: " + user.id)
+                       Log.d("mbtree test", "tree id: " + user.id)
                        Log.d("mbtree test", "name: " + user.name)
                        Log.d("mbtree test", "email: " + user.email)
 

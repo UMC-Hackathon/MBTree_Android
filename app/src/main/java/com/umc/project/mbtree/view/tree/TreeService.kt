@@ -17,4 +17,20 @@ interface TreeService {
 
         ) : Call<TreeResponse>
 
+    @GET("tree/storage")
+    fun getUnreadMsg(
+
+        @Query("treeId") id: Int,
+        @Query("isRead") isRead: Int, //안읽은거라 0을 보내줘야함
+
+        ) : Call<TreeResponse>
+
+    @GET("tree/storage")
+    fun getReadMsg(
+
+        @Query("treeId") id: Int,
+        @Query("isRead") isRead: Int, //읽은거라 1을 보내줘야함
+
+    ) : Call<TreeResponse>
+
 }
