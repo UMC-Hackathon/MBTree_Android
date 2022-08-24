@@ -1,8 +1,6 @@
-package com.umc.project.mbtree.view
+package com.umc.project.mbtree.view.Login
 
 import android.content.Intent
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.kakao.sdk.common.util.Utility
