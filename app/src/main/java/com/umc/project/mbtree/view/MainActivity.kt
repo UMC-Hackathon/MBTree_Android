@@ -1,5 +1,6 @@
 package com.umc.project.mbtree.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -46,6 +47,12 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        //마이페이지 이동 클릭리스너너
+       binding.ibMainMypage.setOnClickListener{
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun replaceView(tab: Fragment){

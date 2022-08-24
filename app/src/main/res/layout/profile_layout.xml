@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <ImageButton
+        android:id="@+id/ib_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/my_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="마이 페이지"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="316dp"
+        android:layout_height="351dp"
+        android:layout_gravity="center"
+        android:background="@drawable/tv_chat_question"
+        android:elevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_page">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_imageview"
+            android:layout_width="114dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_my"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/profile_name"
+            android:layout_width="88dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_imageview" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/my_mbti"
+            android:layout_width="100dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="108dp"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/tv_chat_question"
+            android:text="ESTP"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_name"
+            app:layout_constraintVertical_bias="0.055" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/point"
+            android:layout_width="220dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/tv_chat_question"
+            android:elevation="30dp"
+            android:text="포인트"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_mbti" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/mbtree_fruit"
+            android:layout_width="220dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/tv_chat_question"
+            android:elevation="30dp"
+            android:text="받은 열매"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/point" />
+
+        <Button
+            android:id="@+id/gallery"
+            android:layout_width="114dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="4dp"
+            android:background="#00ff0000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/profile_imageview"
+            app:layout_constraintTop_toTopOf="@+id/profile_imageview" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="398dp"
+        android:layout_height="336dp"
+        android:layout_gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteY="428dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/account"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/tv_chat_question"
+            android:elevation="20dp"
+            android:text="계정"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.055"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/terms_service"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/tv_chat_question"
+            android:elevation="20dp"
+            android:text="이용약관"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/account"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/version"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/tv_chat_question"
+            android:elevation="20dp"
+            android:text="버전 정보"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/terms_service"
+            app:layout_constraintVertical_bias="0.077"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/logout"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/tv_chat_question"
+            android:elevation="20dp"
+            android:text="로그아웃"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/version"
+            app:layout_constraintVertical_bias="0.172"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

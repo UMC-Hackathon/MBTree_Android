@@ -27,7 +27,7 @@
 <!--        </activity>-->
 <!--    </application>-->
 
-    // 순서
+    <!-- 순서 -->
     <application
         android:name=".view.Login.GlobalApplication"
         android:allowBackup="true"
@@ -35,6 +35,7 @@
         android:label="MBTree"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:theme="@style/Theme.Mbtree"
@@ -65,6 +66,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".view.ProfileActivity"
+            android:exported="true"/>
 
 
         <activity

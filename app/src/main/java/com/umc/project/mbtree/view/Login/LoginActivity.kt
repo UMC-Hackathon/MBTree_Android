@@ -1,5 +1,6 @@
 package com.umc.project.mbtree.view.Login
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.util.Log
 import android.widget.ImageButton
 import android.widget.Toast
 import com.kakao.sdk.auth.model.OAuthToken
+import com.kakao.sdk.common.KakaoSdk
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.user.UserApiClient
 import com.umc.project.mbtree.R
@@ -16,21 +18,24 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+       // KakaoSdk.init(this, "{NATIVE_APP_KEY}")
 
         val keyHash = Utility.getKeyHash(this)//onCreate 안에 입력해주자
-        Log.d("Hash", keyHash)
+       // Log.d("Hash", keyHash)
+        Log.e(TAG, "해시 키 값 : ${keyHash}")
 
 
 
         // 로그인 정보 확인
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {
-                Toast.makeText(this, "토큰 정보 보기 실패", Toast.LENGTH_SHORT).show()
+               // Toast.makeText(this, "토큰 정보 보기 실패", Toast.LENGTH_SHORT).show()
+                Log.d("Token", "토큰 정보 보기 실패")
             }
             else if (tokenInfo != null) {
-                Toast.makeText(this, "토큰 정보 보기 성공", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, AfterLoginActivity::class.java)
+              //  Toast.makeText(this, "토큰 정보 보기 성공", Toast.LENGTH_SHORT).show()
+                Log.d("Token", "토큰 정보 보기 성공")
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 finish()
             }
@@ -64,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                     else -> { // Unknown
                         Toast.makeText(this, "기타 에러", Toast.LENGTH_SHORT).show()
+                        Log.d("kakao Login","로그인 오류 " + error.toString())
                     }
                 }
             }
