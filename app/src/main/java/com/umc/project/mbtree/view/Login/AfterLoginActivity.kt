@@ -1,4 +1,4 @@
-package com.umc.project.mbtree.view
+package com.umc.project.mbtree.view.Login
 
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
@@ -14,6 +14,7 @@ import com.kakao.sdk.talk.TalkApiClient
 import com.kakao.sdk.user.UserApiClient
 import com.umc.project.mbtree.R
 import com.umc.project.mbtree.databinding.ActivityAfterLoginBinding
+import com.umc.project.mbtree.view.MainActivity
 
 class AfterLoginActivity : AppCompatActivity() {
 
@@ -53,17 +54,19 @@ class AfterLoginActivity : AppCompatActivity() {
 //        val FriendsAdapter = KaKaoFriendsRVAdapter(this)
 //        binding.kakaoFriendsRv.adapter = FriendsAdapter
 
-        TalkApiClient.instance.friends { friends, error ->
-            if (error != null) {
-                Log.e("실패", "카카오톡 친구 목록 가져오기 실패", error)
-            }
-            else if (friends != null) {
-                Log.i("성공", "카카오톡 친구 목록 가져오기 성공 \n${friends.elements?.joinToString("\n")}")
+        val kakao_friends_button = findViewById<Button>(R.id.kakao_friends_button) // 로그인 버튼
 
-                // 친구의 UUID 로 메시지 보내기 가능
-            }
+        kakao_friends_button.setOnClickListener {
+            TalkApiClient.instance.friends { friends, error ->
+                if (error != null) {
+                     Log.e("실패", "카카오톡 친구 목록 가져오기 실패", error)
+                 } else if (friends != null) {
+                    Log.i("성공", "카카오톡 친구 목록 가져오기 성공 \n${friends.elements?.joinToString("\n")}")
 
-        }
+                    // 친구의 UUID 로 메시지 보내기 가능
+                }
+            }
+         }
 
 
 

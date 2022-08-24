@@ -1,4 +1,4 @@
-package com.umc.project.mbtree.view
+package com.umc.project.mbtree.view.Login
 
 import android.content.Intent
 import android.os.Bundle

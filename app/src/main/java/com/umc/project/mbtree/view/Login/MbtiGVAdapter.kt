@@ -1,4 +1,4 @@
-package com.umc.project.mbtree.view
+package com.umc.project.mbtree.view.Login
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,9 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
 import com.umc.project.mbtree.R
 import kotlinx.android.synthetic.main.item_mbti.view.*
 
