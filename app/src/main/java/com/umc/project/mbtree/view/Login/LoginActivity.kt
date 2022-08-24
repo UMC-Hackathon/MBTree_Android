@@ -1,3 +1,4 @@
+
 package com.umc.project.mbtree.view.Login
 
 import android.content.ContentValues.TAG
@@ -13,6 +14,7 @@ import com.kakao.sdk.common.KakaoSdk
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.user.UserApiClient
 import com.umc.project.mbtree.R
+import com.umc.project.mbtree.view.MainActivity
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
