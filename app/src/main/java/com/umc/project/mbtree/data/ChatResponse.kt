@@ -27,9 +27,40 @@ data class ChatContent(
 )
 
 data class Quiz(
+    val isSuccess: Boolean,
+    val code: Int,
+    val message: String,
+    val result: QuizResult
+)
+
+data class QuizResult(
     val id: Int,
     val quiz: String,
     val keyword: String,
     val answer1: String,
     val answer2: String
+)
+
+data class QuizAnswer(
+    val isSuccess: Boolean,
+    val code: Int,
+    val message: String,
+    val result: QuizAnswerResult?
+){
+    data class QuizAnswerResult(
+        val id:Int,
+        val user1: String,
+        val user2: String,
+        val quiz: String,
+        val quilt: String,
+        val answer1: Int,
+        val answer2: Int
+    )
+}
+
+data class QuizAnswerConfirm(
+    val isSuccess: Boolean,
+    val code: Int,
+    val message: String,
+    val result: Int
 )

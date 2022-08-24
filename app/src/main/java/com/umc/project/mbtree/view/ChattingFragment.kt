@@ -28,6 +28,7 @@ class ChattingFragment: Fragment() {
 
     lateinit var binding: FragmentChattingBinding
     private val serverUrl = "https://mbtree.site"
+    private val userId = 3
     var datas = ArrayList<User>()
 
     override fun onCreateView(
@@ -37,12 +38,16 @@ class ChattingFragment: Fragment() {
     ): View? {
         binding = FragmentChattingBinding.inflate(inflater, container, false)
 
-        getChatList(1)
+        getChatList(userId)
 
         //매칭시작 버튼클릭
         binding.btnChatListStart.setOnClickListener{
-            Toast.makeText(context, "매칭시작", Toast.LENGTH_SHORT).show()
-            matchingStart(1)
+//            Toast.makeText(context, "매칭시작", Toast.LENGTH_SHORT).show()
+            binding.btnChatListStart.setBackgroundColor(resources.getColor(R.color.white))
+            binding.btnChatListStart.setTextColor(resources.getColor(R.color.main_color))
+            binding.btnChatListStart.text = "매칭 중입니다..."
+
+            matchingStart(userId)
         }
 
         return binding.root
@@ -92,10 +97,6 @@ class ChattingFragment: Fragment() {
         retrofitService.matchingChat(userId)
             .enqueue(object : Callback<MatchResponse> {
                 override fun onResponse(call: Call<MatchResponse>, response: Response<MatchResponse>) {
-                    binding.btnChatListStart.setBackgroundColor(resources.getColor(R.color.white))
-                    binding.btnChatListStart.setTextColor(resources.getColor(R.color.main_color))
-                    binding.btnChatListStart.text = "매칭 중입니다..."
-
                     var resp = response.body()!!
 
                     if(resp.responseResult == "SUCCESS"){
@@ -123,7 +124,7 @@ class ChattingFragment: Fragment() {
     }
 
     private fun changeButton()  {
-        binding.btnChatListStart.setBackgroundColor(R.drawable.bg_textview)
+        binding.btnChatListStart.setBackgroundResource((R.drawable.bg_textview))
         binding.btnChatListStart.setTextColor(resources.getColor(R.color.white))
         binding.btnChatListStart.text = "매칭 시작"
     }

@@ -27,4 +27,15 @@ interface ChatRetrofitInterface {
     @GET("chat/quiz")
     fun getQuiz(@Query("roomId")roomId: Int): Call<Quiz>
 
+    //퀴즈 정답 입력
+    @GET("chat/answerQuiz")
+    fun setQuizAnswer(
+        @Query("roomId")roomId: Int,
+        @Query("userId")userId: Int,
+        @Query("answer")answer: Int
+    ): Call<QuizAnswer>
+
+    //퀴즈 정답 비교
+    @GET("chat/checkAnswer")
+    fun getQuizAnswer(@Query("roomId")roomId: Int): Call<QuizAnswerConfirm>
 }

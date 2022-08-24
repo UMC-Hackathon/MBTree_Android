@@ -1,15 +1,26 @@
 package com.umc.project.mbtree.view.chat
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.postDelayed
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.umc.project.mbtree.data.Chat
+import com.umc.project.mbtree.R
+import com.umc.project.mbtree.data.*
 import com.umc.project.mbtree.databinding.ActivityChattingBinding
+import com.umc.project.mbtree.remote.ChatRetrofitInterface
+import com.umc.project.mbtree.remote.getRetrofit
+import kotlinx.android.synthetic.main.item_chat_question.view.*
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import ua.naiksoftware.stomp.Stomp
 import ua.naiksoftware.stomp.dto.LifecycleEvent
 import ua.naiksoftware.stomp.dto.StompHeader
@@ -17,6 +28,7 @@ import ua.naiksoftware.stomp.dto.StompHeader
 class ChattingActivity: AppCompatActivity() {
     lateinit var binding: ActivityChattingBinding
     lateinit var multiAdapter: ChatRVAdapter
+//    private var flag: Boolean = true
 
     private val url = "wss://mbtree.site/chat-websocket/websocket"
     val stompClient = Stomp.over(Stomp.ConnectionProvider.OKHTTP, url)
@@ -27,8 +39,10 @@ class ChattingActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         val roomId = intent.getIntExtra("roomId", -1)
-        val userId = 1
+        val userId = 3
         Log.d("ChattinActivity", "넘어온 roomId: " + roomId)
+
+        getQuiz(roomId)
 
         if(roomId != -1){
             try {
@@ -39,27 +53,29 @@ class ChattingActivity: AppCompatActivity() {
             }
         }
 
-//        binding.etChatSend.setOnTouchListener(object : View.OnTouchListener{
-//            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-//                if(event?.action == MotionEvent.ACTION_UP){
-//                    if(event.rawX >= (binding.etChatSend.right - binding.etChatSend.compoundDrawables[2].bounds.width())){
-//                        Toast.makeText(applicationContext, "누름", Toast.LENGTH_SHORT).show()
-//                        //action here
-//                        sendStomp(binding.etChatSend.text.toString(), roomId, userId)
-//                        return true
-//                    }
-//                }
-//                return false
-//            }
-//        })
-
         // dummy data
         var chatDatas = mutableListOf<Chat>()
         multiAdapter = ChatRVAdapter(this)
         binding.rvChatList.adapter = multiAdapter
         binding.rvChatList.layoutManager = LinearLayoutManager(this)
+
+        multiAdapter.setMyItemClickListener(object: ChatRVAdapter.MyItemClickListener{
+            override fun clickButton1(chat:Chat) {
+                Toast.makeText(applicationContext, "1번 선택", Toast.LENGTH_SHORT).show()
+                setQuizAnswer(roomId, userId, 1)
+                getQuizAnswer(roomId)
+//                flag = true
+            }
+            override fun clickButton2(chat:Chat) {
+                Toast.makeText(applicationContext, "2번 선택", Toast.LENGTH_SHORT).show()
+                setQuizAnswer(roomId, userId, 2)
+                getQuizAnswer(roomId)
+//                flag = true
+            }
+        })
         multiAdapter.chatList = chatDatas
         multiAdapter.notifyDataSetChanged()
+
     }
 
     //stomp구현
@@ -101,9 +117,10 @@ class ChattingActivity: AppCompatActivity() {
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
                 if(event?.action == MotionEvent.ACTION_UP){
                     if(event.rawX >= (binding.etChatSend.right - binding.etChatSend.compoundDrawables[2].bounds.width())){
-                        Toast.makeText(applicationContext, "누름", Toast.LENGTH_SHORT).show()
                         //action here
+//                        Toast.makeText(applicationContext, "누름", Toast.LENGTH_SHORT).show()
                         sendStomp(binding.etChatSend.text.toString(), roomId, userId)
+                        binding.etChatSend.text = null
                         return true
                     }
                 }
@@ -125,6 +142,93 @@ class ChattingActivity: AppCompatActivity() {
         runOnUiThread{
             multiAdapter.notifyDataSetChanged()
         }
+    }
+
+    //키워드 질문 가져오기
+    fun getQuiz(roomId: Int){
+        val retrofitService = getRetrofit().create(ChatRetrofitInterface::class.java)
+        retrofitService.getQuiz(roomId)
+            .enqueue(object: Callback<Quiz>{
+                override fun onResponse(call: Call<Quiz>, response: Response<Quiz>) {
+                    var resp = response.body()!!
+                    if(resp.isSuccess){
+                        val result = resp.result
+
+                        Log.d("ChattingActivity", "Q. ${result.quiz}")
+                        Log.d("ChattingActivity", result.answer1)
+                        Log.d("ChattingActivity", result.answer2)
+                        binding.tvChatKeyword.visibility = View.VISIBLE
+                        binding.tvChatKeyword.text = "Q. " + result.keyword
+
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            binding.tvChatKeyword.visibility = View.GONE
+                            multiAdapter.addItem(Chat(result.quiz, "00:00", 3,
+                                result.quiz, result.answer1, result.answer2))
+
+                            runOnUiThread{
+                                multiAdapter.notifyDataSetChanged()
+                            }
+                        }, 50000)
+                    }
+                }
+
+                override fun onFailure(call: Call<Quiz>, t: Throwable) {
+                    Log.d("Chatting Activity", t.message.toString())
+                }
+
+            })
+    }
+
+    //퀴즈 정답 입력
+    fun setQuizAnswer(roomId:Int, userId:Int, answer:Int){
+        val retrofitService = getRetrofit().create(ChatRetrofitInterface::class.java)
+        retrofitService.setQuizAnswer(roomId, userId, answer)
+            .enqueue(object: Callback<QuizAnswer>{
+                override fun onResponse(
+                    call: Call<QuizAnswer>,
+                    response: Response<QuizAnswer>
+                ) {
+                    var resp = response.body()!!
+                    if(resp.isSuccess){
+                        Log.d("ChattingActivity", resp.result!!.user1)
+                        Log.d("ChattingActivity", resp.result!!.user2)
+                        Log.d("ChattingActivity", resp.result!!.quiz)
+                    }
+                    else{
+                        Log.d("Chatting Activity",resp.message)
+                    }
+                }
+
+                override fun onFailure(call: Call<QuizAnswer>, t: Throwable) {
+                    Log.d("ChatRVAdapter", t.message.toString())
+                }
+
+            })
+    }
+
+    //퀴즈 정답 결과
+    fun getQuizAnswer(roomId: Int){
+        val retrofitService = getRetrofit().create(ChatRetrofitInterface::class.java)
+        retrofitService.getQuizAnswer(roomId)
+            .enqueue(object : Callback<QuizAnswerConfirm>{
+                override fun onResponse(
+                    call: Call<QuizAnswerConfirm>,
+                    response: Response<QuizAnswerConfirm>
+                ) {
+                    var resp = response.body()!!
+                    if(resp.isSuccess){
+                        if(resp.result == 1)
+                            Toast.makeText(applicationContext, "서로 통했습니다!", Toast.LENGTH_SHORT).show()
+                        else
+                            Toast.makeText(applicationContext, "상대방과의 키워드 매칭에 실패했습니다", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<QuizAnswerConfirm>, t: Throwable) {
+                    Log.d("ChatRVAdapter", t.message.toString())
+                }
+
+            })
     }
 
     override fun onDestroy() {
