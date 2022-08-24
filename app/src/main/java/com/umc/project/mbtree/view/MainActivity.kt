@@ -7,13 +7,15 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
 import com.umc.project.mbtree.R
 import com.umc.project.mbtree.databinding.ActivityMainBinding
+import com.umc.project.mbtree.view.chat.ChattingFragment
+import com.umc.project.mbtree.view.friend.FriendFragment
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     lateinit var tab_tree:TreeFragment
-    lateinit var tab_friend:FriendFragment
-    lateinit var tab_chat:ChattingFragment
+    lateinit var tab_friend: FriendFragment
+    lateinit var tab_chat: ChattingFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
