@@ -1,4 +1,4 @@
-package com.umc.project.mbtree.view
+package com.umc.project.mbtree.view.chat
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.umc.project.mbtree.data.Chat
 import com.umc.project.mbtree.data.User
 import com.umc.project.mbtree.databinding.FragmentChattingBinding
-import com.umc.project.mbtree.view.chat.ChatListRVAdapter
 
 class ChattingFragment: Fragment() {
 
