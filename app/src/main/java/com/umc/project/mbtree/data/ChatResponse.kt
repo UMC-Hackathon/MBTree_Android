@@ -1,8 +1,8 @@
 package com.umc.project.mbtree.data
 
-data class ChatResponse (
+data class MatchResponse (
     val responseResult: String,
-    val chatRoodId: Int,
+    val chatRoomId: Int,
     val userId: Int
 )
 

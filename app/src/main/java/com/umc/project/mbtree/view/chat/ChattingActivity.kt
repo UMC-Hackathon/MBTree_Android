@@ -13,13 +13,12 @@ import org.json.JSONObject
 import ua.naiksoftware.stomp.Stomp
 import ua.naiksoftware.stomp.dto.LifecycleEvent
 import ua.naiksoftware.stomp.dto.StompHeader
-import kotlin.concurrent.thread
 
 class ChattingActivity: AppCompatActivity() {
     lateinit var binding: ActivityChattingBinding
     lateinit var multiAdapter: ChatRVAdapter
-    val chatList = mutableListOf<Chat>()
-    private val url = "wss://mbtree.site"
+
+    private val url = "wss://mbtree.site/chat-websocket/websocket"
     val stompClient = Stomp.over(Stomp.ConnectionProvider.OKHTTP, url)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,64 +26,58 @@ class ChattingActivity: AppCompatActivity() {
         binding = ActivityChattingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        try {
-            runStomp()
-        } catch (e:Exception){
-            Log.d("ERROR", "stomp자체의 오류")
-            Log.d("ERROR", e.message.toString())
-        }
+        val roomId = intent.getIntExtra("roomId", -1)
+        val userId = 1
+        Log.d("ChattinActivity", "넘어온 roomId: " + roomId)
 
-//        WebSocketManager.init(serverUrl, this)
-//        thread{
-//            kotlin.run{
-//                WebSocketManager.connect()
-//            }
-//        }
-
-        binding.etChatSend.setOnTouchListener(object : View.OnTouchListener{
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                if(event?.action == MotionEvent.ACTION_UP){
-                    if(event.rawX >= (binding.etChatSend.right - binding.etChatSend.compoundDrawables[2].bounds.width())){
-                        Toast.makeText(applicationContext, "누름", Toast.LENGTH_SHORT).show()
-                        //action here
-//                        if(WebSocketManager.sendMessage("클라이언트에서 보낸다")){
-//                            addText("Send")
-//                        }
-                        return true
-                    }
-                }
-                return false
+        if(roomId != -1){
+            try {
+                runStomp(roomId, userId)
+            } catch (e:Exception){
+                Log.d("ERROR", "stomp 자체의 오류")
+                Log.d("ERROR", e.message.toString())
             }
-        })
-
-        //dummy data
-        var chatDatas = ArrayList<Chat>()
-        chatDatas.apply{
-            add(Chat("안녕하세요", "12:00", 1))
-            add(Chat("네 안녕하세요", "12:00", 2))
-            add(Chat("지금 뭐하세요?", "12:00", 1))
-            add(Chat("저 코딩하는데요", "12:00", 2))
-            add(Chat("시간어택", "12:00", 3))
         }
 
-        multiAdapter = ChatRVAdapter(this, chatDatas)
+//        binding.etChatSend.setOnTouchListener(object : View.OnTouchListener{
+//            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+//                if(event?.action == MotionEvent.ACTION_UP){
+//                    if(event.rawX >= (binding.etChatSend.right - binding.etChatSend.compoundDrawables[2].bounds.width())){
+//                        Toast.makeText(applicationContext, "누름", Toast.LENGTH_SHORT).show()
+//                        //action here
+//                        sendStomp(binding.etChatSend.text.toString(), roomId, userId)
+//                        return true
+//                    }
+//                }
+//                return false
+//            }
+//        })
+
+        // dummy data
+        var chatDatas = mutableListOf<Chat>()
+        multiAdapter = ChatRVAdapter(this)
         binding.rvChatList.adapter = multiAdapter
         binding.rvChatList.layoutManager = LinearLayoutManager(this)
-        multiAdapter.chatList2 = chatDatas
+        multiAdapter.chatList = chatDatas
         multiAdapter.notifyDataSetChanged()
     }
 
     //stomp구현
-    fun runStomp(){
-        stompClient.topic("/topic/chat/1").subscribe{ topicMessage ->
-            Log.d("message Receive", topicMessage.payload)
-        }
-
-        val headerList = arrayListOf<StompHeader>()
-        headerList.add(StompHeader("messageType", "CHAT"))
-        headerList.add(StompHeader("userId", "1"))
-        headerList.add(StompHeader("message", "1"))
+    fun runStomp(roomId: Int, userId: Int){
         stompClient.connect()
+
+        stompClient.topic("/topic/chat/${roomId}").subscribe{ topicMessage ->
+            Log.d("message Receive", topicMessage.payload)
+            val sender = JSONObject(topicMessage.payload).getString("userId").toInt()
+            if(sender != userId){
+                val content = JSONObject(topicMessage.payload).getString("message")
+                multiAdapter.addItem(Chat(content, "12:00", 1))
+
+                runOnUiThread{
+                    multiAdapter.notifyDataSetChanged()
+                }
+            }
+        }
 
         stompClient.lifecycle().subscribe{ lifecycleEvent ->
             when(lifecycleEvent.type){
@@ -102,14 +95,41 @@ class ChattingActivity: AppCompatActivity() {
                     Log.d("else", lifecycleEvent.message)
                 }
             }
-
-            val data = JSONObject()
-            data.put("messageType", "CHAT")
-            data.put("userId", "1")
-            data.put("message", "nayeon test")
-
-            stompClient.send("/app/chat.message/1", data.toString()).subscribe()
         }
+
+        binding.etChatSend.setOnTouchListener(object : View.OnTouchListener{
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                if(event?.action == MotionEvent.ACTION_UP){
+                    if(event.rawX >= (binding.etChatSend.right - binding.etChatSend.compoundDrawables[2].bounds.width())){
+                        Toast.makeText(applicationContext, "누름", Toast.LENGTH_SHORT).show()
+                        //action here
+                        sendStomp(binding.etChatSend.text.toString(), roomId, userId)
+                        return true
+                    }
+                }
+                return false
+            }
+        })
+    }
+
+    fun sendStomp(msg: String, roomId: Int, userId: Int){
+        val data = JSONObject()
+        data.put("messageType", "CHAT")
+        data.put("userId", userId.toString())
+        data.put("message", msg)
+
+        stompClient.send("/app/chat.message/${roomId}", data.toString()).subscribe()
+        Log.d("Message Send", "내가 보낸거: " + msg)
+
+        multiAdapter.addItem(Chat(msg, "12:00", 2))
+        runOnUiThread{
+            multiAdapter.notifyDataSetChanged()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        stompClient.disconnect()
     }
 
 }

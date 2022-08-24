@@ -9,10 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.umc.project.mbtree.R
 import com.umc.project.mbtree.data.Chat
 import com.umc.project.mbtree.databinding.ItemChatMeBinding
-
-class ChatRVAdapter(private val context: Context,
-                    private val chatList:ArrayList<Chat>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var chatList2 = mutableListOf<Chat>()
+                        //,private val chatList:ArrayList<Chat>
+class ChatRVAdapter(private val context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    var chatList = mutableListOf<Chat>()
 
     //처음에 화면에 보일 아이템뷰 생성
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -62,6 +61,12 @@ class ChatRVAdapter(private val context: Context,
 
     override fun getItemCount(): Int {
         return chatList.size
+    }
+
+    fun addItem(chat: Chat){
+        chatList.add(chat)
+//        notifyItemInserted(chatList.size - 1)
+//        notifyDataSetChanged()
     }
 
     //xml을 여러개 사용하려면 오버라이딩 해줘야 함

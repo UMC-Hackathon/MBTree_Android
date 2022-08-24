@@ -1,9 +1,6 @@
 package com.umc.project.mbtree.remote
 
-import com.umc.project.mbtree.data.ChatContent
-import com.umc.project.mbtree.data.ChatList
-import com.umc.project.mbtree.data.ChatResponse
-import com.umc.project.mbtree.data.Quiz
+import com.umc.project.mbtree.data.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -12,8 +9,8 @@ import retrofit2.http.Query
 interface ChatRetrofitInterface {
 
     //랜덤채팅 매칭시작
-    @POST("chat/join")
-    fun matchingChat(@Query("userId")userId: Int): Call<ChatResponse>
+    @GET("chat/join")
+    fun matchingChat(@Query("userId")userId: Int): Call<MatchResponse>
 
     //채팅 리스트 출력
     @GET("chat/list")
