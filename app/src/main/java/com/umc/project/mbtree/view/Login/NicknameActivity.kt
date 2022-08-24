@@ -1,4 +1,3 @@
-
 package com.umc.project.mbtree.view.Login
 
 import android.content.Intent
@@ -24,5 +23,4 @@ class NicknameActivity : AppCompatActivity() {
         })
     }
 }
-
 
