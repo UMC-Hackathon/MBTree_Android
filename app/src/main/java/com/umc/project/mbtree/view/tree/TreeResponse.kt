@@ -10,7 +10,10 @@ data class TreeResponse (
     @SerializedName("code") val code: Int,
     @SerializedName("message") val message: String,
     @SerializedName("result") val result: List<Result>
-)
+)/*
+data class TreeResult(
+    @SerializedName("tree") val tree: List<Result>
+    )*/
 data class Result
     (
     @SerializedName("id") val id:Int,

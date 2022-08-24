@@ -14,6 +14,7 @@ import com.umc.project.mbtree.data.LetterPaper
 import com.umc.project.mbtree.data.User
 import com.umc.project.mbtree.databinding.ItemLetterPaperBinding
 import com.umc.project.mbtree.databinding.ItemListBinding
+import com.umc.project.mbtree.view.Login.NicknameActivity
 import com.umc.project.mbtree.view.friend.FriendRVAdapter
 import kotlinx.android.synthetic.main.item_letter_paper.view.*
 import kotlinx.android.synthetic.main.item_mbti.view.*
