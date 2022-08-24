@@ -1,5 +1,7 @@
 package com.umc.project.mbtree.view.tree
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +13,7 @@ import com.umc.project.mbtree.databinding.ActivityMainBinding.inflate
 import com.umc.project.mbtree.databinding.FragmentFriendBinding
 import com.umc.project.mbtree.databinding.FragmentMyletterBinding
 import com.umc.project.mbtree.databinding.LockerLayoutBinding
+import com.umc.project.mbtree.view.MainActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,6 +21,13 @@ import retrofit2.Response
 class MyletterFragment : Fragment() {
 
     lateinit var binding:FragmentMyletterBinding
+    private lateinit var fContext: Context
+
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        fContext=context
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,7 +38,11 @@ class MyletterFragment : Fragment() {
         binding = FragmentMyletterBinding.inflate(inflater, container,false)
         getMessageId()
        // binding.letterContent.setText(.content)
+        binding.btcancel.setOnClickListener {
+            val intent = Intent(fContext, MainActivity::class.java)
+            startActivity(intent)
 
+        }
         return binding.root
     }
     private fun getMessageId() {

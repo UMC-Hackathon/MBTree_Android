@@ -3,10 +3,16 @@ package com.umc.project.mbtree.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
 import com.umc.project.mbtree.R
 import com.umc.project.mbtree.databinding.ActivityMainBinding
+import com.umc.project.mbtree.databinding.FragmentTreeBinding
+import kotlinx.android.synthetic.main.fragment_tree.*
+import kotlinx.android.synthetic.main.fragment_tree.view.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +20,10 @@ class MainActivity : AppCompatActivity() {
     lateinit var tab_tree:TreeFragment
     lateinit var tab_friend:FriendFragment
     lateinit var tab_chat:ChattingFragment
+    var lx : Float = 0.0f
+    var ly : Float = 0.0f
+    var lx2 : Float = 0.0f
+    var ly2 : Float = 0.0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,12 +35,41 @@ class MainActivity : AppCompatActivity() {
         tab_friend = FriendFragment()
         tab_chat = ChattingFragment()
 
+
         supportFragmentManager.beginTransaction().add(R.id.fl_main, tab_tree).commit()
 
         binding.tabMain.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when(tab?.position){
-                    0 -> { replaceView(tab_tree) }
+                    0 -> { replaceView(tab_tree)
+                        lx=tab_tree.letterView1.x
+                        ly=tab_tree.letterView1.y
+
+
+                        Log.v("eun test1 ", "loc    " + tab_tree.letterView1.getX() + "  " + lx)
+
+                        lx2= tab_tree.letterView2.x
+                        ly2= tab_tree.letterView2.y
+
+                        Log.v("eun test1 ", "loc    " + lx + ly)
+
+                        Log.v("eun test1 ", "loc    " + lx2 + ly2)
+
+
+                        var letter: ImageView = ImageView(this@MainActivity)
+                        Log.v("eun test1 ", "loc    " + letter)
+
+                        letter.setImageResource(R.drawable.ic_letter)
+                        letter.maxHeight =20
+                        letter.maxWidth = 20
+
+                        letter.x = lx2
+                        letter.y = ly2
+
+                        binding.flMain.addView(letter)
+
+                        Log.v("eun test2", "loc    " + letter.x +  letter.y)
+                    }
                     1 -> { replaceView(tab_friend) }
                     2 -> { replaceView(tab_chat) }
                 }

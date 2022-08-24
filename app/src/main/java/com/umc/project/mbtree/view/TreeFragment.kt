@@ -1,16 +1,21 @@
 package com.umc.project.mbtree.view
 
 import android.content.Context
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.umc.project.mbtree.R
 import com.umc.project.mbtree.databinding.FragmentTreeBinding
-import com.umc.project.mbtree.view.tree.LockerBottomSheet
+
 import com.umc.project.mbtree.view.tree.MyletterFragment
 import com.umc.project.mbtree.view.tree.RetrofitObject.getRetrofit
 import com.umc.project.mbtree.view.tree.TreeResponse
@@ -30,6 +35,8 @@ class TreeFragment: Fragment() {
 
     lateinit var binding: FragmentTreeBinding
     private lateinit var fContext: Context
+    var cnt : Int = 0
+
 
 
     override fun onAttach(context: Context) {
@@ -48,11 +55,14 @@ class TreeFragment: Fragment() {
         Log.v("eun test", "getTreeId() 실행 후" )
         binding = FragmentTreeBinding.inflate(inflater, container, false)
         val transaction = parentFragmentManager.beginTransaction()
-        binding.icLetter.setOnClickListener {
 
+
+        binding.icLetter.setOnClickListener {
             transaction.replace(R.id.fl_main, MyletterFragment())
             transaction.addToBackStack(null)
             transaction.commit()
+
+
 
         }
         return binding.root
@@ -60,7 +70,7 @@ class TreeFragment: Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.btnlocker.setOnClickListener {
-            val bottomSheet = LockerBottomSheet()
+            val bottomSheet = Lockerbottomsheet()
             bottomSheet.show(parentFragmentManager, bottomSheet.tag)
         }
 
@@ -96,7 +106,6 @@ class TreeFragment: Fragment() {
                        Log.d("mbtree test", "tree id: " + user.id)
                        Log.d("mbtree test", "name: " + user.name)
                        Log.d("mbtree test", "email: " + user.email)
-
                    }
             }
             override fun onFailure(call: Call<TreeResponse>, t: Throwable) {
@@ -112,4 +121,6 @@ class TreeFragment: Fragment() {
 
 
 }
+
+
 
