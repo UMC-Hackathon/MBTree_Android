@@ -12,7 +12,8 @@
         android:text="메시지 테스트"
         android:textSize="@dimen/chat_text"
         android:textColor="@color/black"
-        android:padding="5dp"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="8dp"
         android:background="@drawable/tv_chat_me"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>

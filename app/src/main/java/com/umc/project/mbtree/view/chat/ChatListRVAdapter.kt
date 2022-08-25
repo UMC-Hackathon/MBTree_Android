@@ -2,6 +2,7 @@ package com.umc.project.mbtree.view.chat
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.umc.project.mbtree.data.User
 import com.umc.project.mbtree.databinding.ItemListBinding
@@ -26,7 +27,10 @@ class ChatListRVAdapter(private val chatList:ArrayList<User>):RecyclerView.Adapt
             //binding.ivListProfile
             binding.tvListName.text = u.name
             binding.tvListMbti.text = u.mbti
+
+//            itemView.setOnLongClickListener{
+//                //롱클릭 시 삭제
+//            }
         }
     }
-
 }
