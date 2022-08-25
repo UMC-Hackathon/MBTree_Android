@@ -1,4 +1,4 @@
-package com.umc.project.mbtree.view
+package com.umc.project.mbtree.view.Login
 
 import android.app.Application
 import com.kakao.sdk.common.KakaoSdk
