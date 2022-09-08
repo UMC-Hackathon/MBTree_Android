@@ -1,18 +1,21 @@
 package com.umc.project.mbtree.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
 import com.umc.project.mbtree.R
 import com.umc.project.mbtree.databinding.ActivityMainBinding
+import com.umc.project.mbtree.view.chat.ChattingFragment
+import com.umc.project.mbtree.view.friend.FriendFragment
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     lateinit var tab_tree:TreeFragment
-    lateinit var tab_friend:FriendFragment
-    lateinit var tab_chat:ChattingFragment
+    lateinit var tab_friend: FriendFragment
+    lateinit var tab_chat: ChattingFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +47,12 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        //마이페이지 이동 클릭리스너너
+       binding.ibMainMypage.setOnClickListener{
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun replaceView(tab: Fragment){

@@ -3,25 +3,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.umc.project.mbtree">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-sdk tools:overrideLibrary="com.kakao.sdk:v2-user:2.11.0" />
+
+<!--    <application-->
+<!--        android:allowBackup="true"-->
+<!--        android:dataExtractionRules="@xml/data_extraction_rules"-->
+<!--        android:fullBackupContent="@xml/backup_rules"-->
+<!--        android:icon="@mipmap/ic_launcher"-->
+<!--        android:label="@string/app_name"-->
+<!--        android:roundIcon="@mipmap/ic_launcher_round"-->
+<!--        android:supportsRtl="true"-->
+<!--        android:theme="@style/Theme.Mbtree"-->
+<!--        tools:targetApi="31">-->
+<!--        <activity-->
+<!--            android:name=".view.MainActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--    </application>-->
+
+    <!-- 순서 -->
     <application
+        android:name=".view.Login.GlobalApplication"
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="MBTree"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:theme="@style/Theme.Mbtree"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        >
+
+        <activity
+            android:name=".view.Login.LoginActivity"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
+
+        <activity
+            android:name=".view.Login.AfterLoginActivity"
+            android:exported="true">
+        </activity>
+
         <activity
             android:name=".view.MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".view.ProfileActivity"
+            android:exported="true"/>
+
+
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="oauth"
+                    android:scheme="kakaob9cb5b66529d307feb9e07fb2553d715" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".view.Login.SelectMBTIActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".view.Login.NicknameActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".view.Login.LoadingActivity"
+            android:exported="true">
+        </activity>
+
+        <activity android:name=".view.chat.ChattingActivity"
+            android:exported="true"/>
+
+
     </application>
 
 </manifest>
